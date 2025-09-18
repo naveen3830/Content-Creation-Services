@@ -39,13 +39,18 @@ export interface PricePlan {
   highlight?: boolean;
 }
 
+export interface PriceExclusion {
+  title: string;
+  desc: string;
+}
+
 export interface Measurement {
   title: string;
   desc: string;
 }
 
 export interface SuccessStory {
-  icon: string;
+  icon: React.ReactNode;
   title: string;
   stat: string;
   desc: string;
@@ -54,6 +59,7 @@ export interface SuccessStory {
 export interface Client {
   name: string;
   industry: string;
+  logoSrc?: string;
 }
 
 export interface RepurposeService {

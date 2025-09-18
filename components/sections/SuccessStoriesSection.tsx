@@ -33,16 +33,24 @@ const SuccessStoriesSection: React.FC = () => {
                             key={client.name} 
                             className={`p-4 rounded-2xl shadow-md w-36 h-36 shrink-0 flex flex-col items-center justify-center text-center gap-1 ${index % 2 === 0 ? 'bg-sky-100' : 'bg-yellow-100'}`}
                         >
-                            {client.logoSrc && (
-                                <img
-                                    src={encodeURI(client.logoSrc)}
-                                    alt={`${client.name} logo`}
-                                    className="h-8 max-w-[100px] object-contain"
-                                />
-                            )}
-                            <div>
-                                <strong className="text-slate-900 font-bold text-sm">{client.name}</strong><br/>
-                                <small className="text-slate-600 text-xs">{client.industry}</small>
+                            {/* Fixed-height logo box to keep vertical alignment consistent */}
+                            <div className="h-10 flex items-center justify-center">
+                                {client.logoSrc && (
+                                    <img
+                                        src={encodeURI(client.logoSrc)}
+                                        alt={`${client.name} logo`}
+                                        className="max-h-8 max-w-[100px] object-contain"
+                                    />
+                                )}
+                            </div>
+                            <div className="text-center leading-tight">
+                                {client.name === 'Fortinet' ? (
+                                    <strong className="text-slate-900 font-bold text-sm block">{client.name}</strong>
+                                ) : (
+                                    // Reserve the same vertical space when name is hidden for alignment
+                                    <span className="block min-h-[1rem]" />
+                                )}
+                                <small className="text-slate-600 text-xs block">{client.industry}</small>
                             </div>
                         </div>
                     ))}
